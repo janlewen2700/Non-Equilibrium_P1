@@ -1,5 +1,9 @@
 """
-This code generates and plots the movement of 1 particle assuming the values as written here.
+Main of our project. each flag is one exercise:
+flag_ex2: generates N(0,1) numbers from U(0,1)
+flag_ex3: simulates a 1 particle movement with or without PBC
+flag_ex4: simulates an N particle configuration with or without PBC
+flag_ex5: finds the msd and D of a configuration with N particles with no PBC
 """
 
 
@@ -14,7 +18,7 @@ from diffusivity import move_diff
 from plots import plot_trajectory, plot_configuration, plot_Gamma_Diff, plot_MSD
 
 
-# -- Dimension, gamma, GAMMA, time_steps, delta_t, Number of particles --
+# -- Dimension (2D), gamma (damping), Gamma (noise), time_steps, delta_t. We will also encounter N = number of particles, L = size of LxL box --
 
 D = 2
 gamma = 1
@@ -22,21 +26,21 @@ Gamma = 1
 time_steps = 100
 delta_t = 0.1
 
-flag_1 = True
-flag_2 = True
-flag_3 = True
-flag_4 = True
+flag_ex2 = True
+flag_ex3 = True
+flag_ex4 = True
+flag_ex5 = True
 
 
 # -- 2. Generation and plotting of a normal distribution N(0,1) from a uniform distribution for 10000 points --
-if flag_1:
+if flag_ex2:
     gauss_plot(10000)
 
 
 
 # -- 3. 1 Particle Langevin equation using the Eurler-Mayurama algorithm --
 
-if flag_2:
+if flag_ex3:
     time_steps = 100
     L = 1
     trajectory = movement(L, 0, D, gamma, Gamma, time_steps, delta_t, False)
@@ -46,7 +50,7 @@ if flag_2:
 
 # -- 4. Implementation for 1000 particles with Perdiodic boundary conditions -- we divide by %L which is what allows us to know if we are inside or outside, and then we add or deduct -L times this value which will bring us to the right place --
 
-if flag_3:
+if flag_ex4:
     N=1000
     L = 100
     
@@ -54,7 +58,7 @@ if flag_3:
     
     
 # -- 5. We calculate the mean displacement, and find the diffusivity for a collection of N particles
-if flag_4:
+if flag_ex5:
     N=1000
     L = 100
     time_steps = 10000
