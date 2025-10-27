@@ -1,5 +1,9 @@
 """
-This code generates and plots the movement of 1 particle assuming the values as written here.
+This code is the main of our Project 1. Each flag relates to one of the exercises:
+flag_1 : exercise 2 (generation of a Normal)
+flag_2 : exercise 3 (Movement of 1 particle)
+flag_3 : exercise 4 (Movement for N particles with PBC)
+flag_4 : exercise 5 (MSD and D calculations)
 """
 
 
@@ -14,7 +18,7 @@ from diffusivity import move_diff
 from plots import plot_trajectory, plot_configuration, plot_Gamma_Diff, plot_MSD
 
 
-# -- Dimension, gamma, GAMMA, time_steps, delta_t, Number of particles --
+# -- Dimension (2D), gamma (damping), GAMMA (Gaussian), time_steps, delta_t. We can also find N = Number of particles and L=box dimension --
 
 D = 2
 gamma = 1
