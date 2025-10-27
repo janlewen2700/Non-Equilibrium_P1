@@ -37,7 +37,7 @@ def gauss_plot(N):
 
 
 
-    # -- we plot the values --
+    # -- we plot the values in log linear --
     plt.figure(figsize=(6, 5))
     plt.hist(norm, bins=100, density=True, alpha=0.6)
     plt.title("Gaussian Distribution (Box–Muller Transform) [log scale]")
@@ -57,8 +57,6 @@ def gauss_plot(N):
     # --- Linear plot with theoretical N(0,1) overlay ---
     plt.figure(figsize=(6, 5))
     plt.hist(norm, bins=100, density=True, alpha=0.6)
-
-    # Theoretical N(0,1) curve
     x = np.linspace(min(norm), max(norm), 500)
     plt.plot(x, norm_dist.pdf(x, 0, 1), 'r-', lw=2, label=r'$\mathcal{N}(0,1)$')
 
