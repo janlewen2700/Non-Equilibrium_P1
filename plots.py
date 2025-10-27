@@ -30,7 +30,7 @@ def plot_trajectory(trajectory):
     plt.savefig("../Plots/Trajectory_1_particle.png")
     plt.close()
 
-# -- Plots the Diffusivity vs Gamma in log-log scale
+# -- Plots the Diffusivity vs Gamma in log-log scale --
 def plot_Gamma_Diff(Gamma_Diff):
     Gamma = [d['Gamma'] for d in Gamma_Diff]
     Diff = [d['Diff'] for d in Gamma_Diff]
@@ -47,6 +47,7 @@ def plot_Gamma_Diff(Gamma_Diff):
     plt.savefig("../Plots/Diff_vs_Gamma.png")
     plt.close()
 
+# -- Plots the MSD vs time in linear scale and a close up for smaller values of Gamma. --
 def plot_MSD(MSD,delta_t):
     # Create a time array (in physical units if you want)
     time = np.arange(len(MSD[0]['MSD'])) * delta_t
