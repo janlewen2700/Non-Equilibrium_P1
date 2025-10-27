@@ -22,9 +22,9 @@ Gamma = 1
 time_steps = 100
 delta_t = 0.1
 
-flag_1 = False
-flag_2 = False
-flag_3 = False
+flag_1 = True
+flag_2 = True
+flag_3 = True
 flag_4 = True
 
 
