@@ -3,15 +3,14 @@ This code generates and plots the movement of 1 particle assuming the values as 
 
 Parameters:
 
-    a = uniform distribution lower limit
-    b = uniform distribution upper limit
-    origin = origin of movement
-    D = Dimension (2D)
-    gamma = Langevin equation parameter
-    Gamma = Langevin equation parameter
+    L = Box size
+    origin = origin of movement (can be the origin (0,0) or a random point in a box LxL.
+    D = Dimension (2D) for the array feneration
+    gamma = Langevin equation parameter (damping coefficient)
+    Gamma = Langevin equation parameter (noise coefficient)
     time_steps = amount of iterations done 
     delt_t = time added after each time step    
-    periodic = if True PBC if False none    
+    periodic = if True PBC if False free    
     
 """
 
