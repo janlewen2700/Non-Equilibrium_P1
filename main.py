@@ -1,9 +1,5 @@
 """
-Main of our project. each flag is one exercise:
-flag_ex2: generates N(0,1) numbers from U(0,1)
-flag_ex3: simulates a 1 particle movement with or without PBC
-flag_ex4: simulates an N particle configuration with or without PBC
-flag_ex5: finds the msd and D of a configuration with N particles with no PBC
+This code generates and plots the movement of 1 particle assuming the values as written here.
 """
 
 
@@ -18,7 +14,7 @@ from diffusivity import move_diff
 from plots import plot_trajectory, plot_configuration, plot_Gamma_Diff, plot_MSD
 
 
-# -- Dimension (2D), gamma (damping), Gamma (noise), time_steps, delta_t. We will also encounter N = number of particles, L = size of LxL box --
+# -- Dimension, gamma, GAMMA, time_steps, delta_t, Number of particles --
 
 D = 2
 gamma = 1
@@ -26,21 +22,21 @@ Gamma = 1
 time_steps = 100
 delta_t = 0.1
 
-flag_ex2 = True
-flag_ex3 = True
-flag_ex4 = True
-flag_ex5 = True
+flag_1 = False
+flag_2 = False
+flag_3 = False
+flag_4 = True
 
 
 # -- 2. Generation and plotting of a normal distribution N(0,1) from a uniform distribution for 10000 points --
-if flag_ex2:
+if flag_1:
     gauss_plot(10000)
 
 
 
 # -- 3. 1 Particle Langevin equation using the Eurler-Mayurama algorithm --
 
-if flag_ex3:
+if flag_2:
     time_steps = 100
     L = 1
     trajectory = movement(L, 0, D, gamma, Gamma, time_steps, delta_t, False)
@@ -50,18 +46,20 @@ if flag_ex3:
 
 # -- 4. Implementation for 1000 particles with Perdiodic boundary conditions -- we divide by %L which is what allows us to know if we are inside or outside, and then we add or deduct -L times this value which will bring us to the right place --
 
-if flag_ex4:
+if flag_3:
     N=1000
     L = 100
+    delta_t = 0.1 # 0.1 is smaller than 1/(2*Gamma) for Gamma = 1
     
     trajectories = N_movement(N, L, 1, D, gamma, Gamma, time_steps, delta_t, True, True)
     
     
 # -- 5. We calculate the mean displacement, and find the diffusivity for a collection of N particles
-if flag_ex5:
+if flag_4:
     N=1000
     L = 100
     time_steps = 10000
+    delta_t = 0.1
     
     Gamma_Diff = []
     MSD = []

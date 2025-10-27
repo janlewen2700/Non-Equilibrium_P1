@@ -7,14 +7,14 @@ import numpy as np
 from configuration import N_movement
 
 
-# -- Makes a N particle movement  --
+# -- Makes a 1 particle movement for our function --
 def move_diff(N, L, origin, D, gamma, factor, time_steps, delta_t, periodic):
     
     Diff_Gamma = []
-
-    # -- how many Gamma powers we want is the value inside range() --
+    
     for i in range (5):
         Gamma = factor*(10**i)
+        delta_t = delta_t/Gamma
         trajectories = N_movement(N, L, origin, D, gamma, Gamma, time_steps, delta_t, periodic, False)
         msd=msd_calculation(trajectories, time_steps)
         
@@ -23,7 +23,7 @@ def move_diff(N, L, origin, D, gamma, factor, time_steps, delta_t, periodic):
 
     return Diff_Gamma
 
-# -- computes msd for each time_step for a set of trajectories --
+
 def msd_calculation(trajectories, time_steps):
     
     trajectories = np.array(trajectories)
@@ -39,7 +39,6 @@ def msd_calculation(trajectories, time_steps):
     return msd
 
 
-# -- computes D for a set of trajectories --
 def diffusivity_calculation(trajectories, time):
 
     MSD = 0.0
